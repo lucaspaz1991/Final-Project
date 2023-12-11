@@ -1,0 +1,70 @@
+<h1 style="margin: 20px 0px 0px 40px;">Inventario del Depósito {{ accessDepositoRequest.codigo }}</h1>
+
+<table >
+    
+
+  <div class="table-container">
+    <table id="tabla">
+        <thead>
+            <tr>
+              <th>Código</th>
+              <th>Capacidad Máxima</th>
+              <th>Ocupación Actual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{accessDepositoRequest.codigo}}</td>
+              <td>{{accessDepositoRequest.capacidadMaxima}} m²</td>
+              <td>{{accessDepositoRequest.ocupacionActual}} m²</td>
+          </tbody>
+    </table>
+
+    <table id="tabla" mat-table [dataSource]="productos" matSort #matTable>
+
+
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+            <mat-cell *matCellDef="let producto">{{ producto.nombre }}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="categoria">
+            <mat-header-cell *matHeaderCellDef>Categoría</mat-header-cell>
+            <mat-cell *matCellDef="let producto">{{ producto.categoria }}</mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="cantidadEnStock">
+            <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+            <mat-cell *matCellDef="let producto">{{ producto.cantidadEnStock }} u.</mat-cell>
+          </ng-container>
+    
+        <ng-container matColumnDef="precio">
+            <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+            <mat-cell *matCellDef="let producto">${{ producto.precio }}</mat-cell>
+        </ng-container>
+    
+          <ng-container matColumnDef="volumen">
+            <mat-header-cell *matHeaderCellDef>Id Depósito</mat-header-cell>
+            <mat-cell *matCellDef="let producto">{{ producto.idDeposito }}</mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="costos">
+            <mat-header-cell *matHeaderCellDef>Id Proveedor</mat-header-cell>
+            <mat-cell *matCellDef="let producto">{{ producto.idProveedor }}</mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef >Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <button mat-icon-button color="primary" (click)="verProducto(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>   
+        <mat-header-row *matHeaderRowDef="columnasDesplegadas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnasDesplegadas"></mat-row>   
+
+    </table>
+  </div>
+  
+

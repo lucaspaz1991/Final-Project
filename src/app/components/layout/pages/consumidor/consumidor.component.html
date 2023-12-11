@@ -1,0 +1,62 @@
+<h1 style="margin: 20px 0px 0px 40px;">Consumidores</h1>
+
+<mat-form-field style="margin: 20px 0px 0px 40px;">
+    <mat-label>Buscar..</mat-label>
+    <input matInput [(ngModel)]="filtroBusqueda" (keyup)="ApplyFilter()">
+</mat-form-field>
+
+<mat-table [dataSource]="consumidores" matSort #matTable>
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Direccion</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.direccion }}</mat-cell>
+    </ng-container>
+    
+      <ng-container matColumnDef="correo">
+        <mat-header-cell *matHeaderCellDef>Correo</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.correo }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="idDeposito">
+        <mat-header-cell *matHeaderCellDef>Id Depósito</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.idDeposito }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef >Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="ClickBotonEditar(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="ClickBotonEliminar(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>    
+   
+  
+    <mat-header-row *matHeaderRowDef="columnasDesplegadas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasDesplegadas"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-title>
+    <button style="margin: 20px 0px 0px 40px;"  mat-raised-button color="primary" (click)="ClickBotonAgregar()">
+        <mat-icon mat-list-icon>add</mat-icon> Nuevo Consumidor
+    </button>
+</mat-card-title>
+
+

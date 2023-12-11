@@ -1,0 +1,127 @@
+
+.title-class {
+    transform: translate(950px, -35px);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
+
+.title-class2 {
+    transform: translate(100px, 200px);
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
+
+.title-class3 {
+    transform: translate(800px, -25px);
+    font-size: 21px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
+
+.title-class4 {
+    transform: translate(800px, 0);
+    font-size: 21px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
+
+
+.example-box {
+
+    border: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: move;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    border-radius: 4px;
+    margin-right: 25px;
+    position: relative;
+    z-index: 1000;
+    box-sizing: border-box;
+    padding: 10px;
+    transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    transform: translate(800px, 25px);
+    background-image: url('src/assets/imagenes/seccion.JPG');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: right center; 
+
+  }
+  
+  .example-box:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  
+  .example-boundary {
+    transform: translateY(25px);
+    margin-left: 25px;
+    width: 500px;
+    height: 500px;
+    max-width: 100%;
+    border: dotted #ccc 2px;
+    background-image: url('src/assets/imagenes/nuevo suelo.jpeg');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+
+  }
+
+  .component-with-background {
+    height: 100%; 
+    width: 100%;
+    background-color: rgb(121, 159, 121);
+}
+
+  .component-deposito{
+    transform: translateY(25px);
+    margin-left: 25px;
+    width: 700px;
+    height: 700px;
+    max-width: 100%;
+    background: #b3aeae;
+    border: 8px solid #fdfdfd; 
+    border-radius: 10px;
+    background-image: url('src/assets/imagenes/inside.jpeg');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+
+  }
+
+  .component-calle{
+    transform: translateY(194px);
+    margin-left: 10px;
+    background-color: rgb(121, 159, 121);
+    width: 1500px;
+    height: 200px;
+    background-image: url('src/assets/imagenes/street2.jpeg');
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    z-index: 999;
+  }
+
+  .seccion-popup {
+    position: absolute;
+    top: 1px; 
+    left: 1px; 
+    background-color: #fff; 
+    border: 1px solid #ccc;
+    padding: 5px; 
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+    font-size: 12px; 
+    line-height: 1.2; 
+  
+  }

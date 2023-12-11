@@ -1,0 +1,94 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+     
+        <button mat-icon-button (click)="sidenav.toggle();">
+            <mat-icon>menu</mat-icon>
+        </button>
+      
+        <button mat-icon-button (click)="SalirDeposito()">
+            <mat-icon>home</mat-icon>
+        </button>
+
+        <span style="flex: 1 1 auto;"></span>
+
+        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+            <div style="display: flex; align-items: center; margin-right: 10px;">
+                <span style="font-size: 14px; ">Depósito
+                    <select matNativeControl required (change)="DepositoSeleccionado($event)">
+                        <option value="" selected>{{accessDepositoRequest.codigo}}</option>
+                        <option *ngFor="let deposito of depositos" [value]="deposito.id">{{deposito.codigo}}</option>
+                    </select>
+                </span>
+
+            </div>
+            <label style="font-size: 14px; margin-bottom: 5px; margin-right: 10px; ">
+                {{usuario}} | {{idRol}}
+                
+            </label>
+            
+        </div>
+        
+        <button mat-icon-button (click)="CerrarSesion()">
+            <mat-icon>logout</mat-icon>
+        </button>
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
+   
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened="true" mode="side" style="width: 250px;">
+        <mat-nav-list>
+
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'deposito']">
+                <mat-icon matListItemIcon>warehouse</mat-icon>
+                <div mat-line>Deposito</div>
+            </mat-list-item> 
+
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'empleados']">
+                <mat-icon matListItemIcon>group</mat-icon>
+                <div mat-line>Empleados</div>
+            </mat-list-item>
+
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'proveedores']">
+                <mat-icon matListItemIcon>sell</mat-icon>
+                <div mat-line>Proveedores</div>
+            </mat-list-item>
+            
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'productos']">
+                <mat-icon matListItemIcon>collections_bookmark</mat-icon>
+                <div mat-line>Productos</div>
+            </mat-list-item>
+            
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'secciones']">
+                <mat-icon matListItemIcon>shelves</mat-icon>
+                <div mat-line>Secciones</div>
+            </mat-list-item>
+            
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'consumidores']">
+                <mat-icon matListItemIcon>shopping_bag</mat-icon>
+                <div mat-line>Consumidores</div>
+            </mat-list-item>
+
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'ordenesIngreso']">
+                <mat-icon matListItemIcon>local_shipping</mat-icon>
+                <div mat-line>Registrar Ordenes</div>
+            </mat-list-item>
+
+            <mat-list-item [routerLink]="['/pages', depositoIdNavegacion, 'ordenesAlmacenar']">
+                <mat-icon matListItemIcon>inventory_2</mat-icon>
+                <div mat-line>Almacenar Ordenes</div>
+            </mat-list-item>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div style="height: 90vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+
+
+</mat-sidenav-container>

@@ -1,0 +1,58 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+
+        <button mat-icon-button (click)="sidenav.toggle();">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="SalirDeposito()">
+            <mat-icon>home</mat-icon>
+        </button>
+
+
+        <span style="flex: 1 1 auto;"></span>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                <div class="mi-perfil" style="display: flex; align-items: center; margin-right: 10px;">
+                    <button style="font-size: 14px; margin-right: 40px; " mat-icon-button routerLink="/pre-pages/mi-perfil">
+                        <mat-icon>person</mat-icon>
+                    </button>
+                </div>
+                <label style="font-size: 14px; margin-bottom: 5px;">
+                    {{usuario}} | {{idRol}}
+                </label>
+            </div>
+
+            <button mat-icon-button (click)="CerrarSesion()">
+                <mat-icon>logout</mat-icon>
+            </button>
+       
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container >
+    <mat-sidenav #sidenav opened="true" mode="side" style="width: 200px;">
+        <mat-nav-list>
+
+            <mat-list-item routerLink="/pre-pages/usuarios" *ngIf="isUsuarioView">
+                <mat-icon matListItemIcon>group</mat-icon>
+                <div mat-line>Usuarios</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/pre-pages/depositos">
+                <mat-icon matListItemIcon>domain</mat-icon>
+                <div mat-line>Depositos</div>
+            </mat-list-item>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div style="height: 90vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>

@@ -1,0 +1,89 @@
+<h1 style="margin: 20px 0px 0px 40px;">Depósitos</h1>
+
+<mat-form-field style="margin: 20px 0px 0px 40px;">
+    <mat-label>Buscar..</mat-label>
+    <input matInput [(ngModel)]="filtroBusqueda" (keyup)="ApplyFilter()">
+</mat-form-field>
+
+<mat-table [dataSource]="depositos2" matSort #matTable>
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let deposito">{{ deposito.id }}</mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
+      <mat-cell *matCellDef="let deposito">{{ deposito.codigo }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="direccion">
+      <mat-header-cell *matHeaderCellDef>Dirección</mat-header-cell>
+      <mat-cell *matCellDef="let deposito">{{ deposito.direccion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ciudad">
+        <mat-header-cell *matHeaderCellDef>Ciudad</mat-header-cell>
+        <mat-cell *matCellDef="let deposito">{{ deposito.ciudad }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="pais">
+        <mat-header-cell *matHeaderCellDef>Pais</mat-header-cell>
+        <mat-cell *matCellDef="let deposito">{{ deposito.pais }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="capacidadMaxima">
+        <mat-header-cell *matHeaderCellDef>Cap.Max</mat-header-cell>
+        <mat-cell *matCellDef="let deposito">{{ deposito.capacidadMaxima }} m²</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ocupacionActual">
+        <mat-header-cell *matHeaderCellDef>Ocup.Act</mat-header-cell>
+        <mat-cell *matCellDef="let deposito">{{ deposito.ocupacionActual }} m²</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="capacidadActual">
+        <mat-header-cell *matHeaderCellDef>Cap.Act</mat-header-cell>
+        <mat-cell *matCellDef="let deposito">{{ deposito.capacidadActual }}%</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaCreacion">
+        <mat-header-cell *matHeaderCellDef>F.Creacion</mat-header-cell>
+        <mat-cell *matCellDef="let deposito">{{ deposito.fechaCreacion }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef >Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="ClickBotonEditar(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="ClickBotonEliminar(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>    
+
+      <ng-container matColumnDef="acceso">
+        <mat-header-cell *matHeaderCellDef>Acceder</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="ClickBotonAcceder(row)">
+            <mat-icon>login</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      
+  
+    <mat-header-row *matHeaderRowDef="columnasDesplegadas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasDesplegadas"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-title>
+    <button style="margin: 20px 0px 0px 40px;" mat-raised-button color="primary" (click)="ClickBotonAgregar()">
+        <mat-icon mat-list-icon>add</mat-icon> Nuevo Depósito
+    </button>
+</mat-card-title>

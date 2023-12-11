@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>{{tituloAccion + (GetDimensionesProducto(
+    datosSeccionProducto.idProducto)*datosSeccionProducto.cantidad)}} m² </h2>
+
+<mat-dialog-content>
+
+    <form [formGroup]="formularioSeccionProducto">
+        <mat-grid-list cols="1" rowHeight="80px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Seccion</mat-label>
+                    <mat-select formControlName="idSeccion">
+                        <mat-option *ngFor="let seccion of secciones" [value]="seccion.id">
+                          {{ seccion.codigo }} | Espacio disponible: {{ (seccion.capacidadMaxima - seccion.ocupacionActual) }} m²
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Id Producto</mat-label>
+                    <input matInput autocomplete="off" formControlName="idProducto">
+                    <mat-icon matSuffix>short_text</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre Producto</mat-label>
+                    <input matInput autocomplete="off" formControlName="nombreProducto">
+                    <mat-icon matSuffix>short_text</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput autocomplete="off" formControlName="cantidad" >
+                    <mat-icon matSuffix>short_text</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile> -->
+            
+        </mat-grid-list>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="formularioSeccionProducto.invalid" (click)="AlmacenarProductos()">{{botonAccion}}</button>
+</mat-dialog-actions>
+

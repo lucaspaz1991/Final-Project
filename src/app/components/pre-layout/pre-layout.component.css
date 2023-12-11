@@ -1,0 +1,14 @@
+.left-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .right-content {
+    font-size: 16px;
+    margin-left: auto;
+  }
+
+  .mi-perfil {
+    transform: translate(0, 15px);
+  }
+

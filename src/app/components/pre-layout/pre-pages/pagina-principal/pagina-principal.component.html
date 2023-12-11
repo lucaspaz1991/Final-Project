@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+</head>
+<body>
+  <div class="component-with-background">
+    <h1>Home</h1>
+      <div class="centered-container">
+        <h2>Bienvenido</h2>
+        <div class="container">
+          <label style="font-size: 20px;">Usuario</label>
+          <input type="text" [(ngModel)]="usuario" id="usuario" readonly="false" />
+          <label style="font-size: 20px;">Rol</label>
+          <input type="text"  [(ngModel)]="idRol" id="idRol" readonly="false"/>
+        </div>
+        <div class="container" style="width: 1000px;">
+          <p>El proyecto SLO llevó adelante el desarrollo de la primer versión de una aplicación de simulación de logística, 
+            basada en logística de entrada, que permite al usuario generar depósitos y todas las entidades que involucra el mismo;
+            y manejar el ingreso, almacenamiento y distribución de mercadería dentro de cada depósito, de manera de poder llevar un 
+            control total sobre el mismo y principalmente sobre el manejo de su stock y capacidad</p>
+        </div>
+        <div class="component-with-footer"></div>
+
+      </div>
+
+    </div>
+</body>
+</html>

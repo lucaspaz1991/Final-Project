@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Inventario de Productos</h2>
+
+<mat-table [dataSource]="productos" matSort #matTable>
+
+
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.nombre }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria">
+        <mat-header-cell *matHeaderCellDef>Categoría</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.categoria }}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="cantidadEnStock">
+        <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.cantidadEnStock }} u.</mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="precio">
+        <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+        <mat-cell *matCellDef="let producto">${{ producto.precio }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="costos">
+        <mat-header-cell *matHeaderCellDef>Costo de almacenaje</mat-header-cell>
+        <mat-cell *matCellDef="let producto">${{ producto.cantidadEnStock * 10 }}</mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="volumen">
+        <mat-header-cell *matHeaderCellDef>Vol. Almacenado</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.cantidadEnStock * producto.dimensiones }} m²</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnasDesplegadas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasDesplegadas"></mat-row>   
+
+  
+
+</mat-table>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+</mat-dialog-actions>

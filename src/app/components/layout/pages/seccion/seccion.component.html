@@ -1,0 +1,81 @@
+<h1 style="margin: 20px 0px 0px 40px;">Secciones</h1>
+
+<mat-form-field style="margin: 20px 0px 0px 40px;">
+    <mat-label>Buscar..</mat-label>
+    <input matInput [(ngModel)]="filtroBusqueda" (keyup)="ApplyFilter()">
+</mat-form-field>
+
+<mat-table [dataSource]="secciones" matSort #matTable>
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.id }}</mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.codigo }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoSeccion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.tipoSeccion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="capacidadMaxima">
+        <mat-header-cell *matHeaderCellDef>Cap.Max</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.capacidadMaxima }} m²</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="ocupacionActual">
+        <mat-header-cell *matHeaderCellDef>Ocup.Act</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.ocupacionActual }} m²</mat-cell>
+    </ng-container>
+   
+    <ng-container matColumnDef="capacidadActual">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Cap.Act</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.capacidadActual }}%</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="fechaCreacion">
+        <mat-header-cell *matHeaderCellDef>F.Creación</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.fechaCreacion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="idDeposito">
+        <mat-header-cell *matHeaderCellDef>Id Depósito</mat-header-cell>
+        <mat-cell *matCellDef="let seccion">{{ seccion.idDeposito }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef >Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="ClickBotonEditar(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="ClickBotonEliminar(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+    </ng-container>    
+   
+    
+    <mat-header-row *matHeaderRowDef="columnasDesplegadas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasDesplegadas"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  <mat-divider></mat-divider>
+
+<mat-card-title>
+    <button style="margin: 20px 0px 0px 40px;"  mat-raised-button color="primary" (click)="ClickBotonAgregar()">
+        <mat-icon mat-list-icon>add</mat-icon> Nueva Sección
+    </button>
+</mat-card-title>
+
+<mat-card-title>
+    <button style="margin: 20px 0px 0px 40px;" mat-raised-button color="primary" (click)="ClickBotonBuscar()">
+        <mat-icon>search</mat-icon> Consultar Inventario
+    </button>
+</mat-card-title>

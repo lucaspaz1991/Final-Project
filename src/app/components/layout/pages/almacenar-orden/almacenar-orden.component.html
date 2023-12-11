@@ -1,0 +1,44 @@
+<h1 style="margin: 20px 0px 0px 40px;">Almacenar Productos</h1>
+
+<mat-table [dataSource]="productosIngresados" matSort #matTable>
+
+    <ng-container matColumnDef="productoIngresadoId">
+        <mat-header-cell *matHeaderCellDef style="display: none;">ProductoIngresadoId</mat-header-cell>
+        <mat-cell *matCellDef="let productosIngresados" style="display: none;">{{ productosIngresados.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreProducto">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let productosIngresados" >{{ productosIngresados.nombreProducto }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidad">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad</mat-header-cell>
+        <mat-cell *matCellDef="let productosIngresados">{{ productosIngresados.cantidad }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="orden">
+        <mat-header-cell *matHeaderCellDef>Numero de Orden</mat-header-cell>
+        <mat-cell *matCellDef="let productosIngresados">#{{ GetCodigoOrden(productosIngresados.ordenEntranteId) }}</mat-cell>
+    </ng-container> 
+
+    <ng-container matColumnDef="idDeposito">
+        <mat-header-cell *matHeaderCellDef>Id Depósito</mat-header-cell>
+        <mat-cell *matCellDef="let productosIngresados">{{ depositoIdNavegacion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef >Asignar Sección</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="ClickBotonAlmacenar(row)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+            </mat-cell>
+    </ng-container>     
+   
+        
+    <mat-header-row *matHeaderRowDef="columnasDesplegadas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasDesplegadas"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

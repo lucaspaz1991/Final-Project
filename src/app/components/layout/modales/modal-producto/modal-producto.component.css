@@ -1,0 +1,15 @@
+mat-form-field{
+    width: 100%;
+    margin: 10px 10px;
+}
+
+form{
+    width: 350px;
+}
+
+.example-events {
+    width: 400px;
+    height: 200px;
+    border: 1px solid #555;
+    overflow: auto;
+  }

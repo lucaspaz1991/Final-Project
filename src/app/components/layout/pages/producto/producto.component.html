@@ -1,0 +1,91 @@
+<h1 style="margin: 20px 0px 0px 40px;">Productos</h1>
+
+<mat-form-field style="margin: 20px 0px 0px 40px;">
+    <mat-label>Buscar..</mat-label>
+    <input matInput [(ngModel)]="filtroBusqueda" (keyup)="ApplyFilter()">
+</mat-form-field>
+
+<mat-table [dataSource]="productos" matSort #matTable>
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.nombre }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.descripcion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria">
+        <mat-header-cell *matHeaderCellDef>Categoría</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.categoria }}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="cantidadEnStock">
+        <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.cantidadEnStock }} u.</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dimensiones">
+        <mat-header-cell *matHeaderCellDef>Dimensiones</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.dimensiones }} m²</mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="precio">
+        <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+        <mat-cell *matCellDef="let producto">${{ producto.precio }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaCreacion">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>F.Creación</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.fechaCreacion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaValidez">
+        <mat-header-cell *matHeaderCellDef>F.Validez</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.fechaValidez }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="idDeposito">
+        <mat-header-cell *matHeaderCellDef>Id Depósito</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.idDeposito }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="idProveedor">
+        <mat-header-cell *matHeaderCellDef>Id Proveedor</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.idProveedor }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef >Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="ClickBotonEditar(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="ClickBotonEliminar(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>    
+   
+  
+    <mat-header-row *matHeaderRowDef="columnasDesplegadas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasDesplegadas"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-title>
+    <button style="margin: 20px 0px 0px 40px;"  mat-raised-button color="primary" (click)="ClickBotonAgregar()">
+        <mat-icon mat-list-icon>add</mat-icon> Nuevo Producto
+    </button>
+</mat-card-title>
+

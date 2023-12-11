@@ -1,0 +1,85 @@
+<mat-card>
+    <mat-card-title>Simulador de Depósitos</mat-card-title>
+    <mat-card-content>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Selecciona un depósito</mat-label>
+            <mat-select [(ngModel)]="DepositoSeleccionado">
+                <mat-option *ngFor="let deposito of depositos" [value]="deposito.id">{{ deposito.codigo }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Tasa de crecimiento diario (%)</mat-label>
+            <input matInput type="number" [(ngModel)]="tasaCrecimiento">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Días de proyección</mat-label>
+            <input matInput type="number" [(ngModel)]="diasProyeccion">
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" (click)="SimularDeposito()">Simular</button>
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-title>Movimientos</mat-card-title>
+    <mat-card-content>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Día</mat-label>
+                <input matInput type="number" [(ngModel)]="movimientoDia">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Cantidad</mat-label>
+                <input matInput type="number" [(ngModel)]="movimientoCantidad">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Tipo</mat-label>
+                <mat-select [(ngModel)]="movimientoTipo">
+                    <mat-option value="ingreso">Ingreso</mat-option>
+                    <mat-option value="salida">Salida</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-button color="primary" (click)="AgregarMovimiento()">Agregar</button>
+        </div>
+
+        <mat-list>
+            <mat-list-item *ngFor="let movimiento of movimientos; let i = index">
+                Día {{ movimiento.dia }}: {{ movimiento.tipo }} de {{ movimiento.cantidad }} 
+                <mat-icon style="cursor:pointer; margin-left:15px;" (click)="BorrarMovimiento(i)">delete</mat-icon>
+            </mat-list-item>
+        </mat-list>
+        
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-title>{{ legendTitle }}</mat-card-title>
+    <mat-card-content>
+        <ngx-charts-line-chart 
+        [view]="[900, 400]"
+        [scheme]="colorScheme"
+        [results]="chartData"
+        [gradient]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [xAxisLabel]="'Días'"
+        [yAxisLabel]="'Ocupación'"
+        [animations]="false"
+        [curve]="curve"
+        [legend]="showLegend">
+        </ngx-charts-line-chart>
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-content>
+        <button mat-raised-button color="warn" (click)="ResetearSimulacion()">Resetear Simulación</button>
+    </mat-card-content>
+</mat-card>

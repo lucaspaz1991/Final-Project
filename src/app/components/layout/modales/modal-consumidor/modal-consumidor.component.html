@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>{{tituloAccion}} Consumidor</h2>
+
+<mat-dialog-content>
+
+    <form [formGroup]="formularioConsumidor">
+        <mat-grid-list cols="1" rowHeight="80px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="nombre">
+                    <mat-icon matSuffix>short_text</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Direccion</mat-label>
+                    <input matInput autocomplete="off" formControlName="direccion">
+                    <mat-icon matSuffix>short_text</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+            
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput autocomplete="off" formControlName="correo" 
+                        placeholder="Ej. email@ejemplo.com">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            
+        </mat-grid-list>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="formularioConsumidor.invalid" (click)="GuardarEditarconsumidor()">{{botonAccion}}</button>
+</mat-dialog-actions>
+
+
+

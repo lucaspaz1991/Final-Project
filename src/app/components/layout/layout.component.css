@@ -1,0 +1,9 @@
+  select {
+    background: transparent; 
+    color: white;
+    border: none; 
+  }
+
+  option {
+    color: rgb(82, 40, 235);
+  }

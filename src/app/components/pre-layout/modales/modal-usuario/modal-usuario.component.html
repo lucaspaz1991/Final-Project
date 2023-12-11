@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>{{tituloAccion}} Usuario</h2>
+
+<mat-dialog-content>
+
+    <form [formGroup]="formularioUsuario">
+        <mat-grid-list cols="1" rowHeight="80px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput autocomplete="off" formControlName="email"
+                        placeholder="Ej. email@ejemplo.com">
+                    <mat-icon matSuffix>mail</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Rol</mat-label>
+                    <mat-select formControlName="idRol">
+                        <mat-option value="Admin">Admin</mat-option>
+                        <mat-option value="Usuario básico">Usuario básico</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput autocomplete="off" formControlName="usuario">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                        <input matInput [type]="ocultarPassword ? 'password' : 'text'" formControlName="contrasena" >
+
+                        <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
+                            <mat-icon matSuffix>{{ocultarPassword ? 'visibility_off' :'visibility'}}</mat-icon>
+                        </button>
+
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+        </mat-grid-list>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="formularioUsuario.invalid" (click)="GuardarEditarusuario()">{{botonAccion}}</button>
+</mat-dialog-actions>

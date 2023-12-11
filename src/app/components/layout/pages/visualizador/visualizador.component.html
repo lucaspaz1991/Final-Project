@@ -1,0 +1,36 @@
+
+<div class="component-with-background">
+    <div class="component-deposito">
+      <div class="seccion-popup" *ngIf="seccionPopup">
+        <h3>Datos de la sección</h3>
+        <p>Capacidad Maxima: {{ seccionPopup.capacidadMaxima }} m²</p>
+        <p>Ocupacion Actual: {{ seccionPopup.ocupacionActual }} m²</p>
+        <p>Capacidad Actual: {{ seccionPopup.capacidadActual }}%</p>
+      </div>
+      <div class="example-boundary">
+        <p class="title-class">Depósito {{ accessDepositoRequest.codigo }}</p>
+        <p class="title-class2">Área de almacenamiento</p>
+        <p class="title-class3">1- Haga click en la sección que desea ordenar</p>
+        <p class="title-class4">2- Arrastre la sección a la ubicación deseada</p>
+        <div
+          class="example-box"
+          cdkDragBoundary=".example-boundary"
+          cdkDrag
+          *ngFor="let seccion of secciones"
+          (click)="ResetearPosicion($event, seccion.codigo)"
+          (mouseenter)="MostrarDetallesSeccion(seccion)"
+          (mouseleave)="OcultarDetallesSeccion()"
+          [cdkDragDisabled]="!dragEnabled[seccion.codigo]"
+          [ngStyle]="{
+              'width.px': seccion.width,
+              'height.px': seccion.height
+          }"
+        >
+          {{ seccion.codigo }}
+        </div>
+      </div>
+      <div class="component-calle">
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,41 @@
+
+
+<h2 mat-dialog-title>Inventario de cada Sección</h2>
+
+<div *ngFor="let item of prueba">
+    <h3 style="margin: 20px 40px 0px 20px;">{{ item.seccion ? 'Sección: ' + item.seccion.codigo : 'Sin Sección' }}</h3>
+  <mat-table [dataSource]="item.productos" matSort #matTable>
+    <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef>Código Sección</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.codigo }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreProducto">
+      <mat-header-cell *matHeaderCellDef>Nombre Producto</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.nombreProducto }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidadEnStock">
+      <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.cantidad }} u.</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="costos">
+      <mat-header-cell *matHeaderCellDef>Costo de almacenaje</mat-header-cell>
+      <mat-cell *matCellDef="let row">${{ row.cantidad * 10 }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="volumen">
+      <mat-header-cell *matHeaderCellDef>Vol. Almacenado</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ GetDimensionProducto(row.idProducto)*row.cantidad }} m²</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnasDesplegadas2"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnasDesplegadas2"></mat-row>
+  </mat-table>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+</mat-dialog-actions>
+
